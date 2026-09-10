@@ -1,0 +1,52 @@
+{
+  "name": "learning-workbench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "dev:local": "next dev --hostname 127.0.0.1 --port 3006",
+    "site:install": "zsh ops/install-site-service.sh",
+    "site:restart": "zsh ops/restart-site.sh",
+    "site:health": "zsh ops/health-check.sh",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --experimental-strip-types tests/*.test.mjs",
+    "db:migrate": "node scripts/init-db.mjs && prisma migrate deploy",
+    "db:seed": "node --experimental-strip-types scripts/seed.mjs",
+    "import:gaokao": "node --experimental-strip-types scripts/import-gaokao.mjs",
+    "import:gaokao-bench": "node --experimental-strip-types scripts/import-gaokao-bench.mjs",
+    "questions:link-pdfs": "node --experimental-strip-types scripts/link-gaokao-pdf-evidence.mjs",
+    "questions:render-pages": "node --experimental-strip-types scripts/render-source-pages.mjs",
+    "questions:extract-pages": "node --experimental-strip-types scripts/extract-source-pages.mjs",
+    "questions:reclassify": "node --experimental-strip-types scripts/reclassify-questions.mjs",
+    "questions:quality": "node --experimental-strip-types scripts/enrich-question-quality.mjs",
+    "sources:candidates": "node --experimental-strip-types scripts/seed-source-candidates.mjs",
+    "questions:foundation": "node --experimental-strip-types scripts/seed-foundation-questions.mjs",
+    "questions:high-one-core": "node --experimental-strip-types scripts/seed-high-one-core-questions.mjs",
+    "topics:seed": "node --experimental-strip-types scripts/seed-topic-summaries.mjs",
+    "methods:seed": "node scripts/seed-solution-methods.mjs"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.16.3",
+    "katex": "^0.16.22",
+    "mathjs": "^15.2.0",
+    "next": "^15.3.4",
+    "prisma": "^6.16.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@types/katex": "^0.16.7",
+    "@types/node": "^24.0.4",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "eslint": "^9.29.0",
+    "eslint-config-next": "^15.3.4",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.62.0"
+  }
+}
